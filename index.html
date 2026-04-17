@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"><title>Tasks Pro</title></head>
+<body>
+<h2>Tasks Pro</h2>
+<button onclick="start()">🎤 Grabar tarea</button>
+<ul id="list"></ul>
+<script>
+function start(){
+ const rec = new webkitSpeechRecognition();
+ rec.lang="es-ES";
+ rec.start();
+ rec.onresult = e=>{
+   const text = e.results[0][0].transcript;
+   const li=document.createElement("li");
+   li.innerText=text;
+   document.getElementById("list").appendChild(li);
+ };
+}
+</script>
+</body>
+</html>
